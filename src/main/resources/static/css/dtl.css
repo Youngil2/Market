@@ -1,0 +1,60 @@
+      .repImgDiv {
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        width: 20%;
+      }
+
+      .repImg {
+        width: 100%;
+        height: auto;
+      }
+
+      .wd50 {
+        width: 50%;
+        padding: 10px;
+      }
+
+      .mgb-15 {
+        margin-bottom: 15px;
+      }
+
+      .mgt-50 {
+        margin-top: 50px;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+
+      h3 {
+        font-size: 30px;
+        font-weight: bold;
+      }
+
+      #reply {
+              display:flex;
+              justify-content:space-between;
+              width: 500px;
+              padding: 10px;
+              border-radius: 10px;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+              margin: 20px auto;
+            }
+
+            #content {
+              border-radius: 5px;
+              margin-bottom: 20px;
+              padding: 10px;
+              width: 85%;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .btn {
+              border-radius: 5px;
+              background-color: #3498db;
+              color: white;
+              padding: 10px;
+            }

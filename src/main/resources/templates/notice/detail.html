@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{body}">
+<head>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+</head>
+
+
+<div layout:fragment="content">
+    <input type="hidden" id="noticeId" th:value="${noticeFormDto.id}">
+
+
+    <table class="table table-bordered">
+
+        <tbody>
+        <tr>
+            <th style="width:55px;">제목</th>
+            <td th:text="${noticeFormDto.title}"></td>
+            <th style="width:55px;">부제목</th>
+            <td th:text="${noticeFormDto.subTitle}"></td>
+            <th style="width:55px;">작성자</th>
+            <td th:text="${noticeFormDto.role}"></td>
+            <th style="width:55px;">작성일</th>
+            <td th:text="${#temporals.format(noticeFormDto.regTime, 'yyyy-MM-dd  ')}"></td>
+        </tr>
+        </tbody>
+
+
+        <tbody>
+        <tr>
+            <th colspan="8" >본문 내용</th>
+        </tr>
+        <tr>
+
+            <td colspan="8" style="width:100%;" th:text="${noticeFormDto.content}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+</div>
+
+<!-- 변수 셋팅 -->
+<script th:inline="javascript">
+            /*<![CDATA[*/
+            var boardDto = /*[[${NoticeFormDto}]]*/ "";
+            /*]]>*/
+
+
+
+</script>
+
+
+
+</html>

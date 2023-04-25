@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf/org">
+
+
+
+<div th:fragment = "footer">
+    <footer>
+        <div class="chat-bar-collapsible">
+            <button id="chat-button" type="button" class="collapsible">
+                채팅
+                <i class="chat-icon fa fa-fw fa-comments-o"></i>
+            </button>
+
+            <div class="content1">
+                <div class="full-chat-block">
+                    <div class="outer-container">
+                        <div class="chat-container">
+                            <div id="chatbox">
+                                <h5 id="chat-timestamp"></h5>
+                                <p id="botStarterMessage" class="botText">
+                                    <span>로딩 ...</span>
+                                </p>
+                            </div>
+
+                            <div class="chat-bar-input-block">
+                                <div id="userInput">
+                                    <input
+                                            id="textInput"
+                                            class="input-box"
+                                            type="text"
+                                            name="msg"
+                                            placeholder="ENTER를 눌러 메세지를 보내."
+                                    />
+                                    <p></p>
+                                </div>
+
+                                <div class="chat-bar-icons">
+                                    <i
+                                            class="chat-icon fa fa-fw fa-heart"
+                                            style="color: red"
+
+                                            onclick="heartButton()"
+                                    ></i>
+
+                                    <i
+                                            class="chat-icon fa fa-fw fa-send"
+                                            style="color: #333"
+                                            onclick="sendButton()"
+                                    ></i>
+                                </div>
+                            </div>
+
+                            <div id="chat-bar-bottom">
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="footer-content">
+            <h3>K2 MARKET</h3>
+            <p>중고거래 사이트입니다. 많은것을 둘러보세요.</p>
+            <ul class="socials">
+                <li>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-linkedin-square"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                ⓒ 2023 K2 Market designed by
+                <b>Young il , Hyun seok , Young Jun ,Si ho, Kyung Ho</b>
+            </p>
+        </div>
+    </footer>
+
+</div>
+</html>

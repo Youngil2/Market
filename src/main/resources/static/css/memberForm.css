@@ -1,0 +1,115 @@
+.signup {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.signup label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.signup input[type="text"],
+.signup input[type="email"],
+.signup input[type="password"],
+.signup input[type="button"],
+.signup select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.signup input[type="checkbox"] + label {
+  margin-left: 10px;
+}
+
+.signup .custom-select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.signup button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: red;
+  color: #fff;
+  cursor: pointer;
+}
+
+.signup input::-webkit-input-placeholder {
+  color: #999;
+}
+
+.signup input:-ms-input-placeholder {
+  color: #999;
+}
+
+.signup input::placeholder {
+  color: #999;
+}
+
+/* 주소 검색 */
+.signup .address {
+  width: calc(100% - 130px);
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.signup input[type="button"] {
+  margin-left: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: red;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* 체크박스 스타일 */
+.form-group input[type="checkbox"] {
+  width: 18px;
+     height: 18px;
+     margin-right: 10px;
+}
+
+.form-check-label {
+  margin-top : 3px;
+}
+
+/*.form-group input[type="checkbox"]:checked + label.form-check-label:before {
+  content: "";
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}*/
+
+/* 관심분야 전체 영역 스타일 */
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* 각 체크박스 영역 스타일 */
+.form-group > div {
+  margin-right: 20px;
+  margin-bottom: 10px;
+}

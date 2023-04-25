@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{body}">
+
+<div layout:fragment="content">
+
+<!-- Modal -->
+<div id="idModal" class="modal">
+  <div class="modal-content">
+    <span class="close"></span>
+    <p>회원님의 아이디는 {아이디} 입니다.</p>
+  </div>
+</div>
+</div>
+
+
+<script>
+   var modal = document.getElementById("idModal"); // id가 "idModal"인 모달을 가져옴
+
+
+  var btn = document.querySelector("#login button"); // 로그인 버튼 요소를 가져옴
+
+  btn.addEventListener("click", function (event) {
+    // 로그인 버튼 클릭 시
+    event.preventDefault(); // 폼 제출을 방지
+
+    var name = document.querySelector("#login input[type='text']").value; // 이름 입력 요소
+    var phone = document.querySelector("#login input[type='tel']").value; // 전화번호 입력 요소
+
+    var userExists = checkUserExists(name, phone); // DB 에서 사용자가 존재하는지 확인하는 함수를 호출하여 결과를 저장
+
+    if (userExists) {
+      // 사용자가 존재하면 모달창을 열고 해당 사용자의 아이디를 출력함
+      var userId = getUserId(name, phone); // 사용자의 아이디를 가져오는 함수 > 호출 후 결과를 저장
+      modal.querySelector("p").textContent =
+        "회원님의 아이디는 " + userId + " 입니다."; // 모달에 아이디를 출력
+      modal.style.display = "block"; // 모달 표시
+    } else {
+      // 사용자가 존재하지 않으면 알림창을 띄움
+      alert("일치하는 사용자가 없습니다.");
+    }
+  });
+
+  // When the user clicks on <span> (x), close the modal
+  modal.querySelector(".close").addEventListener("click", function () {
+    // "x" 버튼이 클릭되면 모달창을 닫음
+    modal.style.display = "none";
+  });
+
+  // Helper functions
+  function checkUserExists(name, phone) {
+    // DB에서 해당 이름과 전화번호를 가진 사용자가 존재하는지 확인하고 true나 false를 반환
+  }
+
+  function getUserId(name, phone) {
+    // DB에서 해당 이름과 전화번호를 가진 사용자의 아이디를 가져와서 반환함
+  }
+
+  function checkUserExists(name, phone) {}
+
+  function getUserId(name, phone) {}
+</script>
+</html>

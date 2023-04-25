@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{body}">
+
+<!-- 사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+/*<![CDATA[*/
+        $(document).ready(function(){
+            $("#searchBtn").on("click",function(e) {
+                e.preventDefault();
+                page(0);
+            });
+        });
+
+        function page(page){
+            var searchDateType = $("#searchDateType").val();
+            var searchSellStatus = $("#searchSellStatus").val();
+            var searchBy = $("#searchBy").val();
+            var searchQuery = $("#searchQuery").val();
+
+            location.href="/user/list/" + page + "?searchDateType=" + searchDateType
+            + "&searchSellStatus=" + searchSellStatus
+            + "&searchBy=" + searchBy
+            + "&searchQuery=" + searchQuery;
+        }
+  /*]]>*/
+
+    </script>
+</th:block>
+
+<div layout:fragment="content">
+
+    <form th:action="@{'/user/list/' + ${member.number}}" role="form" method="get" th:object="${member}">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>이메일</th>
+                <th>이름</th>
+                <th>번호</th>
+                <th>주소</th>
+                <th>성별</th>
+                <th>가입일</th>
+                <th>탈퇴</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <!-- CONTENTS !-->
+            <tr th:each="Member, status: ${member.getContent()}">
+
+                <td th:text="${Member.id}" ></td>
+                <td th:text="${Member.email}"></td>
+                <td th:text="${Member.name}"></td>
+                <td th:text="${Member.phone}"></td>
+                <td th:text="${Member.addr}"></td>
+                <td th:text="${Member.gender}"></td>
+                <td th:text="${#temporals.format(Member.regTime, 'yyyy-MM-dd  ')}"></td>
+
+
+                <td>
+                    <li><a href="/members/delete">회원강제탈퇴</a></li>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+</html>

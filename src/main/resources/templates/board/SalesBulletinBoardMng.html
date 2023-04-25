@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{body}">
+
+
+
+<th:block layout:fragment="css">
+    <link th:href="@{/css/SalesBulletinBoardMng.css}" rel="stylesheet">
+</th:block>
+
+
+
+<div layout:fragment="content">
+
+
+
+    <form th:action="@{'/allProduct/' + ${items.number}}" role="form" method="get" th:object="${items}">
+
+        <div class="form-inline justify-content-center" th:object="${itemSearchDto}">
+            <div class="form-group">
+                <select th:field="*{searchSellStatus}" class="form-control">
+                    <option value="SELL">판매</option>
+                    <option value="SOLDOUT">품절</option>
+                    <option value="RES">예약</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select th:field="*{searchBy}" class="form-control">
+                    <option value="itemNm">상품명</option>
+                    <option value="createdBy">등록자</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input th:field="*{searchQuery}" id="search-keyword" type="text" class="form-control" placeholder="검색어를 입력해주세요">
+            </div>
+            <div class="form-group">
+                <button id="searchBtn" type="submit" class="btn btn-primary">검색</button>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <td>게시판 제목</td>
+                <td>상품명</td>
+                <td>상태</td>
+                <td>등록자</td>
+                <td>등록일</td>
+                <td>삭제</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="SalesBulletinBoard, status: ${items.getContent()}">
+                <td th:text="${SalesBulletinBoard.title}"></td>
+                <td>
+                    <a th:href="'/user/board_write/'+${SalesBulletinBoard.id}" th:text="${SalesBulletinBoard.itemNm}"></a>
+                </td>
+                <td th:text="${SalesBulletinBoard.itemSellStatus == T(com.DWmarket.market.constant.ItemSellStatus).SELL }?'판매중': (${SalesBulletinBoard.itemSellStatus == T(com.DWmarket.market.constant.ItemSellStatus).RES } ? '예약완료' : '품절')  "></td>
+                <td th:text="${SalesBulletinBoard.createBy}"></td>
+                <td th:text="${SalesBulletinBoard.regTime}"></td>
+                <td><a th:href="@{'/board_write/delete/'+${SalesBulletinBoard.id}}" class="btn btn-primary">
+                    삭제
+                </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})">
+            <ul class="pagination justify-content-center">
+
+                <li class="page-item" th:classappend="${items.first}?'disabled'">
+                    <a th:onclick="'javascript:page(' + ${items.number - 1} + ')'" aria-label='Previous'
+                       class="page-link">
+                        <span aria-hidden='true'>Previous</span>
+                    </a>
+                </li>
+
+                <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}"
+                    th:classappend="${items.number eq page-1}?'active':''">
+                    <a th:onclick="'javascript:page(' + ${page - 1} + ')'" th:inline="text" class="page-link">[[${page}]]</a>
+                </li>
+
+                <li class="page-item" th:classappend="${items.last}?'disabled'">
+                    <a th:onclick="'javascript:page(' + ${items.number + 1} + ')'" aria-label='Next' class="page-link">
+                        <span aria-hidden='true'>Next</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+
+
+
+
+    </form>
+
+</div>
+
+</html>

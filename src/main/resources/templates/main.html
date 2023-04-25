@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{body}" >
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/main.js}"></script>
+</th:block>
+
+
+<div layout:fragment="content">
+
+    <section>
+        <div class="slider">
+            <figure>
+                <div class="slide">
+                    <img src="/image/Slider_01.png" alt="슬라이드 이미지 1" />
+                </div>
+                <div class="slide">
+                    <img src="/image/Slider_02.png" alt="슬라이드 이미지 2" />
+                </div>
+                <div class="slide">
+                    <img src="/image/Slider_03.png" alt="슬라이드 이미지 3" />
+                </div>
+                <div class="slide">
+                    <img src="/image/Slider_06.png" alt="슬라이드 이미지 4" />
+                </div>
+                <div class="slide">
+                    <img src="/image/Slider_05.png" alt="슬라이드 이미지 5" />
+                </div>
+            </figure>
+        </div>
+    </section>
+    <!--  이미지 슬라이드 섹션 -->
+
+    <!-- 메인 -->
+    <main>
+        <section class="home-main">
+            <div class="home-main__item background-beige">
+                <div class="item-box top--box" id="action1">
+                    <article class="item-box__text">
+                        <h1>당신 근처의 <br />K2마켓</h1>
+                        <p>중고 거래부터 동네 정보까지, 이웃과 함께해요.</p>
+                        <p>가깝고 따뜻한 당신의 근처를 만들어요.</p>
+                    </article>
+                    <div class="item-box__img top--img">
+                        <img
+                                src="/image/phono-image-1.png"
+                                alt="phone-image-1"
+                                class="desktop"
+                        />
+                        <img
+                                src="/image/phono-image-1.png"
+                                alt="phone-image-1"
+                                class="mobile"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="home-main__item">
+                <div class="item-box" id="action2">
+                    <div class="item-box__img">
+                        <img src="/image/phono-image-2.png" alt="phono-image-2" />
+                    </div>
+                    <div class="item-box__container">
+                        <article class="item-box__text">
+                            <h2>우리 동네<br />중고 직거래 마켓</h2>
+                            <p>동네 주민들과 가깝고 따뜻한 거래를 지금 경험해보세요.</p>
+                        </article>
+                        <div class="item-box__button">
+                            <button>
+                                <a href="#home-popular__title">인기매물 보기</a>
+                            </button>
+                            <button>믿을 수 있는 중고거래</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="home-main__item background-green">
+                <div class="item-box" id="action3">
+                    <div>
+                        <article class="item-box__text">
+                            <h2>이웃과 함께 하는<br />동네 생활</h2>
+                            <p>우리 동네의 다양한 이야기를 이웃과 함께 나누어요.</p>
+                        </article>
+                        <div class="item-box__list">
+                            <div class="item-box__item">
+                                <img
+                                        src="/image/icon-story-1.svg"
+                                        alt="icon-story-1"
+                                />
+                                <h3>우리동네질문</h3>
+                                <p>궁금한 게 있을 땐 이웃<br />에게 물어보세요.</p>
+                            </div>
+                            <div class="item-box__item">
+                                <img
+                                        src="/image/icon-story-2.svg"
+                                        alt="icon-story-2"
+                                />
+                                <h3>동네분실센터</h3>
+                                <p>무언가를 잃어버렸을 때,<br />함께 찾을 수 있어요.</p>
+                            </div>
+                            <div class="item-box__item">
+                                <img
+                                        src="/image/icon-story-3.svg"
+                                        alt="icon-story-3"
+                                />
+                                <h3>우리동네질문</h3>
+                                <p>관심사가 비슷한 이웃과<br />온오프라인으로 만나요.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-box__img">
+                        <img src="/image/phono-image-3.png" alt="phono-image-3" />
+                    </div>
+                </div>
+            </div>
+            <div class="home-main__item">
+                <div class="item-box" id="action4">
+                    <div class="item-box__img">
+                        <img src="/image/phono-image-4.png" alt="phono-image-4" />
+                    </div>
+                    <div class="item-box__container">
+                        <article class="item-box__text">
+                            <h2>내 근처에서 찾는<br />동네가게</h2>
+                            <p>우리 동네 가게를 찾고있나요?</p>
+                            <p>동네 주민이 남긴 진짜 후기를 확인해보세요!</p>
+                        </article>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-popular background-gray">
+            <div class="home-popular__title">
+                <h2 id="home-popular__title">방금 올라온 중고거래</h2>
+            </div>
+
+            <div class="home-popular__list">
+                <div class="row ">
+                    <th:block th:each="SalesBulletinBoard, status: ${items.getContent()}">
+                        <div class="col-md-4 margin">
+                            <div class="card">
+                                <a th:href="'/board_write/' +${SalesBulletinBoard.id}" class="text-dark">
+                                    <img th:src="${SalesBulletinBoard.imgUrl}" class="card-img-top" th:alt="${SalesBulletinBoard.itemNm}" height="400">
+                                    <div class="card-body">
+                                        <h4 class="card-title">[[${SalesBulletinBoard.itemNm}]]</h4>
+                                        <p class="card-text">[[${SalesBulletinBoard.detail}]]</p>
+                                        <h3 class="card-title text-danger">[[${SalesBulletinBoard.price}]]원</h3>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+
+                <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
+                    <ul class="pagination justify-content-center">
+
+                        <li class="page-item" th:classappend="${items.number eq 0}?'disabled':''">
+                            <a th:href="@{'/' + '?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1}}" aria-label='Previous' class="page-link">
+                                <span aria-hidden='true'>Previous</span>
+                            </a>
+                        </li>
+
+                        <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page-1}?'active':''">
+                            <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+                        </li>
+
+                        <li class="page-item" th:classappend="${items.number+1 ge items.totalPages}?'disabled':''">
+                            <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1}}" aria-label='Next' class="page-link">
+                                <span aria-hidden='true'>Next</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+        <section class="home-search">
+            <div class="home-search__title bold-text">중고거래 인기검색어</div>
+            <ul class="home-search__list">
+                <li class="home-search__item">포켓몬빵</li>
+                <li class="home-search__item">자전거</li>
+                <li class="home-search__item">의자</li>
+                <li class="home-search__item">냉장고</li>
+                <li class="home-search__item">캠핑</li>
+                <li class="home-search__item">아이패드</li>
+                <li class="home-search__item">아이폰</li>
+                <li class="home-search__item">노트북</li>
+                <li class="home-search__item">알바</li>
+                <li class="home-search__item">오토바이</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- 탑 버튼 -->
+    <div class="topBtn">
+        <a href="#top" id="topBtn"><span></span>TOP</a>
+    </div>
+    <!-- 탑 버튼 -->
+
+
+</div>
+</html>

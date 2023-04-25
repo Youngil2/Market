@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<th:block layout:fragment="css">
+    <link th:href="@{/css/test.css}" rel="stylesheet">
+</th:block>
+
+
+<div layout:fragment="content">
+
+    <div class="wrap">
+        <div class="greenContainer">
+            <div>
+                <div class="grade">K2Market</div>
+                <div>
+                    <span th:text="${username}">.</span>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="summaryContainer">
+            <div class="item">
+                <div><a href="/allProduct">전체상품보기</a></div>
+            </div>
+            <div class="item">
+                <div><a href="/user/list">회원관리</a></div>
+            </div>
+            <div class="item">
+                <div> <a href="/notice/list">공지사항</a></div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>
+</html>

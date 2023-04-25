@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{body}">
+<head>
+  <meta name="_csrf" th:content="${_csrf.token}"/>
+  <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+</head>
+<th:block layout:fragment="css">
+  <link th:href="@{/css/dtl.css}" rel="stylesheet">
+
+</th:block>
+
+
+
+<div layout:fragment="content">
+
+  <input type="hidden" id="reportId" th:value="${reportDto.id}">
+
+  <div class="d-flex">
+    <div class="repImgDiv">
+      <img th:src="${reportDto.reportImgDtoList[0].imgUrl}" class="rounded repImg"
+           th:alt="${reportDto.title}">
+    </div>
+
+
+  <div class="jumbotron jumbotron-fluid mgt-30">
+    <div class="container">
+      <h4 class="display-5">문의/ 신고 상세 내용</h4>
+      <hr class="my-4">
+      <p class="lead" th:text="${reportDto.detail}"></p>
+    </div>
+  </div>
+
+
+
+  <a th:href="'/report/user/write/new/'+${reportDto.id}">수정</a>
+  <a th:href="@{'/report/write/delete/'+${reportDto.id}}">삭제</a>
+
+  <div th:each="ReportImg : ${reportDto.reportImgDtoList}" class="text-center">
+    <img th:if="${not #strings.isEmpty(ReportImg.imgUrl)}" th:src="${ReportImg.imgUrl}"
+         class="rounded mgb-15">
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+</html>

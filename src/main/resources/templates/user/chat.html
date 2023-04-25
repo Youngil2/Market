@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{body}">
+<th:block layout:fragment="css">
+
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/chat.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</th:block>
+
+
+<div layout:fragment="chat">
+    <div class="chat-bar-collapsible">
+        <button id="chat-button" type="button" class="collapsible">
+            채팅
+            <i class="chat-icon fa fa-fw fa-comments-o"></i>
+        </button>
+
+        <div class="content1">
+            <div class="full-chat-block">
+                <div class="outer-container">
+                    <div class="chat-container">
+                        <div id="chatbox">
+                            <h5 id="chat-timestamp"></h5>
+                            <p id="botStarterMessage" class="botText">
+                                <span>로딩 ...</span>
+                            </p>
+                        </div>
+
+                        <div class="chat-bar-input-block">
+                            <div id="userInput">
+                                <input
+                                        id="textInput"
+                                        class="input-box"
+                                        type="text"
+                                        name="msg"
+                                        placeholder="ENTER를 눌러 메세지를 보내."
+                                />
+                                <p></p>
+                            </div>
+
+                            <div class="chat-bar-icons">
+                                <i
+                                        class="chat-icon fa fa-fw fa-heart"
+                                        style="color: red"
+
+                                        onclick="heartButton()"
+                                ></i>
+
+                                <i
+                                        class="chat-icon fa fa-fw fa-send"
+                                        style="color: #333"
+                                        onclick="sendButton()"
+                                ></i>
+                            </div>
+                        </div>
+
+                        <div id="chat-bar-bottom">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</html>

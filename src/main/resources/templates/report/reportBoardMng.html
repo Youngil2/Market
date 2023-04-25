@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{body}">
+
+
+
+<th:block layout:fragment="css">
+    <link th:href="@{/css/SalesBulletinBoardMng.css}" rel="stylesheet">
+</th:block>
+
+
+
+<div layout:fragment="content">
+
+
+
+        <a style="float: right" class="btn btn-primary" href="/report/write/new">글쓰기</a>
+
+
+    <form th:action="@{'/report/Mng/' + ${items.number}}" role="form" method="get" th:object="${items}">
+
+        <div class="form-inline justify-content-center" th:object="${reportSearchDto}">
+
+            <div class="form-group">
+                <select th:field="*{searchBy}" class="form-control">
+                    <option value="title">제목</option>
+                    <option value="createdBy">등록자</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input th:field="*{searchQuery}" id="search-keyword" type="text" class="form-control" placeholder="검색어를 입력해주세요">
+            </div>
+            <div class="form-group">
+                <button id="searchBtn" type="submit" class="btn btn-primary">검색</button>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <td>게시판 제목</td>
+                <td>등록자</td>
+                <td>등록일</td>
+                <td>삭제</td>
+            </tr>
+            </thead>
+            <tbody>
+            <!--: sec:authorize="hasAnyAuthority('ROLE_Admin')" ${#authorization.expression('hasRole(''ROLE_Admin'')') ? true : false}  ${session.user eq Report.createBy}?: ${T(com.DWmarket.market.constant.Role).Admin}? "hasAnyAuthority('ROLE_Admin')"-->
+            <tr th:each="Report, status: ${items.getContent()}">
+                <td th:if="${#authorization.expression('hasRole(''ROLE_Admin'')') ? true : false}">
+                    <a   th:href="'/report/detail/' +${Report.id}" th:text="${Report.title}"></a>
+                </td>
+                <td th:if="${#authorization.expression('hasRole(''ROLE_Admin'')') ? false : true}" >
+                    <div th:if="${#strings.isEmpty(Report.secret)} or ${session.user eq Report.createBy}">
+                        <a   th:href="'/report/detail/' +${Report.id}" th:text="${Report.title}"></a>
+                    </div>
+                    <div th:if="${not #strings.isEmpty(Report.secret)} and ${session.user ne Report.createBy} ">
+                        <a    th:text="비밀글입니다." ></a>
+                    </div>
+                </td>
+                <td th:text="${Report.createBy}"></td>
+                <td th:text="${Report.regTime}"></td>
+                <td th:if="${#authorization.expression('hasRole(''ROLE_Admin'')') ? true : false} or ${session.user eq Report.createBy}">
+                    <a th:href="@{'/report/write/delete/'+${Report.id}}" class="btn btn-primary">
+                    삭제
+                </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})">
+            <ul class="pagination justify-content-center">
+
+                <li class="page-item" th:classappend="${items.first}?'disabled'">
+                    <a th:onclick="'javascript:page(' + ${items.number - 1} + ')'" aria-label='Previous'
+                       class="page-link">
+                        <span aria-hidden='true'>Previous</span>
+                    </a>
+                </li>
+
+                <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}"
+                    th:classappend="${items.number eq page-1}?'active':''">
+                    <a th:onclick="'javascript:page(' + ${page - 1} + ')'" th:inline="text" class="page-link">[[${page}]]</a>
+                </li>
+
+                <li class="page-item" th:classappend="${items.last}?'disabled'">
+                    <a th:onclick="'javascript:page(' + ${items.number + 1} + ')'" aria-label='Next' class="page-link">
+                        <span aria-hidden='true'>Next</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+
+
+
+
+    </form>
+
+</div>
+
+</html>

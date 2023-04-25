@@ -1,0 +1,319 @@
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* 이미지 스타일 */
+header {
+  background-image: url(../image/new_logo.jpeg);
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* 홈으로 가기 */
+
+.home-btn {
+  background-color: #2b2b2b;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  float: left;
+  margin: 5px 0 0 10px;
+  cursor: pointer;
+}
+
+/* 이미지 슬라이드 */
+.slider {
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+.slider figure div {
+  float: left;
+  width: 20%;
+}
+
+.slider figure img {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  float: left;
+}
+
+.slider figure {
+  position: relative;
+  width: 500%;
+  margin: 0;
+  animation: animate 20s infinite;
+}
+
+@keyframes animate {
+  0% {
+    left: 0;
+  }
+  10% {
+    left: 0;
+  }
+  12% {
+    left: -100%;
+  }
+  22% {
+    left: -100%;
+  }
+  24% {
+    left: -200%;
+  }
+  34% {
+    left: -200%;
+  }
+  36% {
+    left: -300%;
+  }
+  46% {
+    left: -300%;
+  }
+  50% {
+    left: -400%;
+  }
+  58% {
+    left: -400%;
+  }
+  60% {
+    left: -300%;
+  }
+  70% {
+    left: -300%;
+  }
+  72% {
+    left: -200%;
+  }
+  82% {
+    left: -200%;
+  }
+  84% {
+    left: -100%;
+  }
+  94% {
+    left: -100%;
+  }
+  96% {
+    left: 0;
+  }
+}
+
+/* 버튼 스타일 */
+.dropbtn {
+  display: none;
+  background-color: #2b2b2b;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  float: left;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 140px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
+  top: 50px;
+}
+
+.dropdown-content li a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: yellow;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* 로그인/회원가입 버튼 스타일 */
+.user{
+float:right;
+color:white;
+}
+
+.login-btn,
+.signup-btn {
+  background-color: #2b2b2b;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  margin-top: 0px;
+  border-radius: 4px;
+  float: right;
+  margin-right: 0px;
+  z-index: -999999999999;
+}
+
+.write-Btn,
+.notice-Btn {
+  background-color: #2b2b2b;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  margin-top: 0px;
+  border-radius: 4px;
+  float: right;
+  margin-right: 0px;
+}
+
+/* 로그인 버튼과 회원가입 버튼 간의 간격 조정 */
+.signup-btn {
+  margin-right: 10px;
+}
+
+nav {
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.menu-list, .user-list {
+  list-style: none;
+
+  padding: 0;
+}
+
+.menu-list li:hover, .user-list li:hover{
+  background-color: #2b2b2b;
+}
+
+.menu-list > li a:hover , .user-list > li a:hover{
+  color: #fff;
+  background-color: #2b2b2b;
+}
+
+.menu-list li{
+  display: inline-block;
+  position: relative;
+}
+
+.menu-list li a , .user-list li a{
+  display: block;
+  /*color: #000;*/
+  padding: 10px 20px;
+  text-decoration: none;
+}
+.menu-list li:hover .dropdown-menu {
+  display: block;
+}
+
+/* Style the drop-down menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #2b2b2b;
+  padding: 10px;
+  width: 180px;
+  z-index: 999999;
+}
+
+.dropdown-menu li {
+  display: block;
+}
+
+.dropdown-menu li a {
+  color: #fff;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #fff;
+  color: red;
+}
+
+/* 푸터 상단으로 끌어올리기 */
+.topBtn {
+  position: fixed;
+  right: 50px;
+  bottom: 80px;
+  z-index: 999;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.topBtn a {
+  display: block;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: #000;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 15px;
+  line-height: 120%;
+  font-weight: 800;
+  color: #fff;
+  padding: 22px 0 0;
+  transition: all 0.3s linear;
+}
+.topBtn a span {
+  display: block;
+  width: 12px;
+  height: 8px;
+  margin: 0 auto 6px;
+  background: url("../image/top.png") no-repeat center/100% auto;
+}
+
+/* 반응형 */
+
+@media screen and (max-width: 700px) {
+  .dropbtn {
+    display: block;
+  }
+
+  /* 드롭다운 메뉴 스타일 */
+  .dropdown-content {
+    min-width: 140px;
+  }
+
+  /* 로그인/회원가입 버튼 스타일 */
+  .login-btn,
+  .signup-btn,
+  .dropbtn {
+    padding: 8px 20px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  /* 이미지 스타일 */
+  .header-img {
+    height: 200px;
+  }
+
+  /* 드롭다운 메뉴 스타일 */
+  .dropdown-content {
+    min-width: 80px;
+  }
+
+  /* 로그인/회원가입 버튼 스타일 */
+  .login-btn,
+  .signup-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

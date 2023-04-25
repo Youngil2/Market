@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf/org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+
+<div th:fragment = "header">
+  <!-- 로그인 및 회원가입 -->
+      <nav>
+        <ul class="menu-list user">
+
+
+          <li>
+            <a href="#" sec:authorize="isAuthenticated()"  class="login-btn">마이페이지</a>
+            <ul class="dropdown-menu">
+              <li><a href="/members/change">회원정보수정</a></li>
+              <li><a href="/members/delete">회원탈퇴</a></li>
+              <li><a href="/admin/myPage" sec:authorize="hasAnyAuthority('ROLE_Admin')">관리자페이지</a></li>
+            </ul>
+          </li>
+          <li><a href="/members/logout" class="login-btn" sec:authorize="isAuthenticated()">로그아웃</a></li>
+          <li> <a href="/members/login" class="login-btn" sec:authorize="isAnonymous()">로그인</a></li>
+
+        </ul>
+      </nav>
+
+
+
+    <!-- 메뉴 -->
+    <nav>
+      <div class="dropdown">
+        <a class="dropbtn">메뉴</a>
+        <div class="dropdown-content">
+          <li><a href="#">가구</a></li>
+          <li><a href="#">스포츠</a></li>
+          <li><a href="#">유아</a></li>
+          <li><a href="#">게임</a></li>
+          <li><a href="#">디지털</a></li>
+          <li><a href="#">티켓 / 쿠폰</a></li>
+          <li><a href="#">반려동물 용품</a></li>
+          <li><a href="#">무료 나눔</a></li>
+          <li><a href="#">자동차 용품</a></li>
+        </div>
+      </div>
+    </nav>
+    <!-- 메뉴 -->
+
+    <!-- 로고 -->
+    <a href="/">
+      <header></header>
+    </a>
+    <!-- 로고 -->
+
+    <!-- 메뉴 -->
+    <nav>
+      <ul class="menu-list">
+        <li>
+          <a href="#">카테고리</a>
+          <ul class="dropdown-menu">
+            <li><a href="/hns/furniture">가구</a></li>
+            <li><a href="/hns/sports">스포츠</a></li>
+            <li><a href="/hns/baby">유아</a></li>
+            <li><a href="/hns/game">게임</a></li>
+            <li><a href="/hns/digital">디지털</a></li>
+            <li><a href="/hns/ticket">티켓 / 쿠폰</a></li>
+            <li><a href="/hns/pet">반려동물 용품</a></li>
+            <li><a href="/hns/free">무료 나눔</a></li>
+            <li><a href="/hns/car">자동차 용품</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" sec:authorize="isAuthenticated()">게시판쓰기</a>
+          <ul class="dropdown-menu">
+            <li><a href="/user/board_write/new" class="write_btn" >판매게시판 등록</a></li>
+            <li><a href="/report/Mng" class="write_btn" >문의 / 신고</a></li>
+          </ul>
+        </li>
+
+        <li><a href="/notice/list">공지사항</a></li>
+      </ul>
+    </nav>
+    <!-- 메뉴 -->
+
+
+
+
+
+
+
+
+
+</div>
+</html>
